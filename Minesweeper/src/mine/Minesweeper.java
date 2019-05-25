@@ -47,20 +47,13 @@ public class Minesweeper {
 		yy = random.nextInt(col);
 
 		for (int i = 0; i < index; i++) {
-//			System.out.println("만든 랜덤값 :" + xx + ":" + yy);
-//			System.out.println("for 문의 i :" + i + " x , y :" + x[i] + " ," + y[i]);
 			if (xx == x[i] && yy == y[i]) {
-//				System.out.println("x[" + i + "] :" + x[i] + "y[" + i + "] :" + y[i]);
-//				System.out.println(xx + "와" + yy + "는" + "중복입니다.");
+				//또다시 처음부터 배열 탐색
 				i = -1;
-//				System.out.println("다시 되돌아가기");
 				xx = random.nextInt(row);
 				yy = random.nextInt(col);
-
 			}
-
 		}
-//		System.out.println(xx + "와" + yy + "를" + "생성.");
 		result[0] = xx;
 		result[1] = yy;
 		return result;
@@ -75,31 +68,24 @@ public class Minesweeper {
 			int[] result = makeRandomPosition(i);
 			x[i] = result[0];
 			y[i] = result[1];
-			// System.out.println("별 위치 :" + x[i] + " : " + y[i]);
 		}
 
 		// 지뢰찾기
 		for (int i = 0; i < mine; i++) {
 			findMine(x[i], y[i]);
-			// System.out.println("지뢰위치 : " + x[i] + " : " + y[i]);
 		}
 
 		// 지뢰로 바꿔주기
 		for (int i = 0; i < mine; i++) {
 			changeToMine(x[i], y[i]);
-			// System.out.println("별로 바꾸기 : " + x[i] + " : " + y[i]);
 		}
 
 	}
 
 	private void changeToMine(int x, int y) {
-
 		stage[x][y] = "*";
-		
-//		System.out.println("지뢰좌표 : " + x + " : " + y);
-		// System.out.println("지뢰 수 :" + cnt);
-
 	}
+	
 // 지뢰 찾기 
 	private void findMine(int x, int y) {
 
